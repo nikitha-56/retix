@@ -14,6 +14,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
     List<Ticket> findByBuyer(User buyer);
     List<Ticket> findByOwner(User u);
+   List<Ticket> findByEventNameContainingIgnoreCase(String eventName);
 
 
     List<Ticket> findBySellerAndStatus(User seller, TicketStatus requested);

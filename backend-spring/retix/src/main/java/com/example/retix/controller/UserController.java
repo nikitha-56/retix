@@ -6,6 +6,7 @@ import com.example.retix.model.Role;
 import com.example.retix.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,11 @@ public class UserController {
             User createdUser = userService.createUser(user);
             logger.info("User created successfully: {}", createdUser.getEmail());
             return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException e) {
+            logger.error("Duplicate email or constraint violation: {}", e.getMessage());
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         } catch (Exception e) {
+
             logger.error("Error creating user", e);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

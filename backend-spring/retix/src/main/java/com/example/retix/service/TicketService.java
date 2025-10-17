@@ -141,9 +141,10 @@ public class TicketService {
 
     /* ───── Additional Features Without Caching ───────────── */
 
-    public List<Ticket> searchTickets(String k) {
-        return ticketRepository.findBySeatDetailsContainingIgnoreCase(k);
-    }
+    public List<Ticket> searchTickets(String eventName) {
+    return ticketRepository.findByEventNameContainingIgnoreCase(eventName);
+}
+
 
     public List<Ticket> getTicketsListedBySeller(User s) {
         return ticketRepository.findBySeller(s);
