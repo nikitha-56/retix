@@ -32,7 +32,8 @@ VS Code
 
 Setup Instructions
 1️⃣ Clone the Project
-git clone https://github.com/your-username/retix.git
+git clone https://github.com/nikitha-56/retix.git
+
 cd retix
 
 2️⃣ Create MySQL Database
@@ -76,15 +77,15 @@ Modular service-repository-controller architecture
 Postman collection of all APIs
 Status-tracking for booking workflow (REQUESTED → APPROVED → PAID)
 
-<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/6e6abf64-a472-4d5c-b382-6d553a59abce" />
+<img width="400" height="500" alt="image" src="https://github.com/user-attachments/assets/6e6abf64-a472-4d5c-b382-6d553a59abce" />
 
-<img width="400" height="399" alt="image" src="https://github.com/user-attachments/assets/11a1ee19-b23d-4ae1-b8f1-e3dd01d58b84" />
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/11a1ee19-b23d-4ae1-b8f1-e3dd01d58b84" />
 
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/4d0ad727-fca1-49a7-a051-358e936cb769" />
 
 <img width="635" height="401" alt="image" src="https://github.com/user-attachments/assets/b2a918b2-dfac-4095-9627-441dc95f8cbe" />
 
-<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/6439bc27-11f9-40d2-ba08-0a95636ca22a" />
+<img width="400" height="500" alt="image" src="https://github.com/user-attachments/assets/6439bc27-11f9-40d2-ba08-0a95636ca22a" />
 
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/bda45bc4-9e5d-4e12-b1af-2a777b71eed7" />
 
@@ -104,4 +105,4 @@ Payments are simulated (only status is updated, no real gateway).
 QR code verification is done using Base64 + ZXing.
 Booking flow is linear: REQUESTED → APPROVED → PAID.
 
-Open Postman → Import → Upload Retix-collection.postman_collection.json
+“Open Postman → Click Import → Choose Upload Files → Select Retix-collection.postman_collection.json → Click Import.
