@@ -25,9 +25,7 @@ public class BookingRequestService {
         this.userRepo = userRepo;
     }
 
-    /* ------------------------------------------------------------- */
-    /* 1. Buyer creates a booking request                            */
-    /* ------------------------------------------------------------- */
+  
     @Transactional
     public BookingRequest createRequest(Long ticketId, Long buyerId) {
 
@@ -55,22 +53,22 @@ public class BookingRequestService {
     /* 2. Seller responds (ACCEPT / DECLINE)                         */
     /* ------------------------------------------------------------- */
     @Transactional
-    public BookingRequest respondToRequest(Long requestId, BookingRequest.Status status) {
+    public BookingRequest respondToRequest(Long requestId, String status) {
+        BookingRequest request = bookingRequestRepo.findById(requestId)
+                .orElseThrow(() -> new RuntimeException("Booking request not found"));
 
-        BookingRequest req = bookingRequestRepo.findById(requestId)
-                .orElseThrow(() -> new IllegalArgumentException("Request not found"));
+        BookingRequest.Status enumStatus = BookingRequest.Status.valueOf(status.toUpperCase());
+        request.setStatus(enumStatus);
 
-        Ticket ticket = req.getTicket();
-        req.setStatus(status);
-
-        if (status == BookingRequest.Status.ACCEPTED) {
+        Ticket ticket = request.getTicket();
+        if (enumStatus == BookingRequest.Status.ACCEPTED) {
             ticket.setStatus(TicketStatus.SOLD);
-            ticket.setBuyer(req.getBuyer());
-        } else if (status == BookingRequest.Status.DECLINED) {
+            ticket.setBuyer(request.getBuyer());
+        } else if (enumStatus == BookingRequest.Status.DECLINED) {
             ticket.setStatus(TicketStatus.AVAILABLE);
         }
         ticketRepo.save(ticket);
-        return bookingRequestRepo.save(req);
+        return bookingRequestRepo.save(request);
     }
 
     /* ------------------------------------------------------------- */

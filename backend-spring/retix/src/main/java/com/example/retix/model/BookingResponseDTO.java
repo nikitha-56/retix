@@ -2,7 +2,7 @@ package com.example.retix.model;
 
 public class BookingResponseDTO {
     private Long requestId;
-    private BookingRequest.Status status;
+    private String status; // use String instead of BookingRequest.Status
 
     public Long getRequestId() {
         return requestId;
@@ -12,11 +12,11 @@ public class BookingResponseDTO {
         this.requestId = requestId;
     }
 
-    public BookingRequest.Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(BookingRequest.Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }
